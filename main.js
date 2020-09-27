@@ -1,13 +1,34 @@
+var currentlySpeaking = false;
+var myVar;
+
+function startSpeaking() {
+    if (currentlySpeaking) {return;}
+    currentlySpeaking = true;
+    recursiveSpeaking();
+}
+
+function recursiveSpeaking() {
+    myVar = setTimeout(function () {
+        speak(); 
+        currentlySpeaking = false;
+        recursiveSpeaking();
+    }, 3000);
+}
+
+function stopSpeaking() {
+    clearTimeout(myVar);
+}
+
+
 
 function speak() {
-    console.log("speaking...");
     var msg = new SpeechSynthesisUtterance();
-    console.log(questions.length);
     var x = Math.floor(Math.random() * questions.length);
     var y = Math.floor(Math.random() * questions[x].length);
     msg.text = questions[x][y];
     msg.lang = 'nl';
     window.speechSynthesis.speak(msg);
+    console.log(msg.text);
 }
 
 var questions =
@@ -68,7 +89,13 @@ var questions =
         ],
         [
             "Droom je?",
+            "Droom je?",
+            "Droom je?",
+            "Droom je?",
+            "Droom je?",
+            "Droom je?",
             "Zou dit een droom kunnen zijn?",
             "Ben je aan het dromen?",
-        ]
+            "Dit is geen droom, of wel?",
+        ],
     ]
