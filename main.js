@@ -65,5 +65,10 @@ var questions =
             "Waar ben je?",
             "Welke sokken heb je aan?",
             "Hoe zien je veters eruit?",
+        ],
+        [
+            "Droom je?",
+            "Zou dit een droom kunnen zijn?",
+            "Ben je aan het dromen?",
         ]
     ]
