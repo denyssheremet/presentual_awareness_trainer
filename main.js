@@ -4,6 +4,7 @@ var myVar;
 function startSpeaking() {
     if (currentlySpeaking) {return;}
     currentlySpeaking = true;
+    speak(); 
     recursiveSpeaking();
 }
 
@@ -12,7 +13,7 @@ function recursiveSpeaking() {
         speak(); 
         currentlySpeaking = false;
         recursiveSpeaking();
-    }, 3000);
+    }, 5000);
 }
 
 function stopSpeaking() {
@@ -27,6 +28,8 @@ function speak() {
     var y = Math.floor(Math.random() * questions[x].length);
     msg.text = questions[x][y];
     msg.lang = 'nl';
+    msg.rate = 0.8; // From 0.1 to 10
+    msg.pitch = 0; // From 0 to 2
     window.speechSynthesis.speak(msg);
     console.log(msg.text);
 }
@@ -34,6 +37,7 @@ function speak() {
 var questions =
     [
         [
+            "Waar kijk je naar?",
             "Waar kijk je naar?",
             "Waar zie je rood?",
             "Waar zie je blauw?",
@@ -70,7 +74,7 @@ var questions =
         ],
         [
             "Welke smaak heb je in je mond?",
-            "Waar doet de smaak in je mond nu aan denken?",
+            "Waar doet de smaak in je mond je aan denken?",
         ],
         [
             "Hoe ruikt het?",
@@ -86,6 +90,7 @@ var questions =
             "Waar ben je?",
             "Welke sokken heb je aan?",
             "Hoe zien je veters eruit?",
+            "Zou je haar doen?",
         ],
         [
             "Droom je?",
